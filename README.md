@@ -47,3 +47,8 @@ O arquivo JavaScript define a lógica da aplicação, incluindo:
 3. Clique em "Editar" na tabela para modificar informações de um usuário.
 4. Clique em "Excluir" para remover um usuário da lista.
 
+## Exemplo de Tela
+
+Aqui está um exemplo de como a aplicação se parece:
+
+![Tela da Aplicação](/assets/img/exemplo.jpg)
