@@ -1,6 +1,6 @@
 # Cadastro de Usuários
 
-Este projeto é uma aplicação simples para o cadastro e gerenciamento de usuários solicitado pela IBB Instituto Brasileiro de Biotecnologia e Inovação. A aplicação permite criar, editar e excluir usuários, e os dados são armazenados no localStorage do navegador.
+Este projeto é uma aplicação simples desenvolvida para atender ao desafio da IBB Instituto Brasileiro de Biotecnologia e Inovação. O objetivo principal foi utilizar a lógica de forma eficiente e direta, conforme solicitado. A aplicação permite criar, editar e excluir usuários, com todos os dados armazenados no localStorage do navegador para uma implementação prática e acessível.
 
 ## Estrutura do Projeto
 
