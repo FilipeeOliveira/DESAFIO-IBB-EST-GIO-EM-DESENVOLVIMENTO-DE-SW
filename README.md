@@ -49,6 +49,4 @@ O arquivo JavaScript define a lógica da aplicação, incluindo:
 
 ## Exemplo de Tela
 
-Aqui está um exemplo de como a aplicação se parece:
-
 ![Tela da Aplicação](/assets/img/exemplo.jpg)
