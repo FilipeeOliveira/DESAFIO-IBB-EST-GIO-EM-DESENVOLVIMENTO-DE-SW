@@ -34,7 +34,6 @@ const isValidFields = () => {
 }
 
 
-
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
     fields.forEach(field => field.value = "")
@@ -122,7 +121,6 @@ const editDelete = (event) => {
 
 updateTable()
 
-// Eventos
 document.getElementById('cadastrarCliente')
     .addEventListener('click', openModal)
 
