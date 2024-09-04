@@ -5,8 +5,8 @@
 }
 
 :root{
-    --primary-color: #FFBA00;
-    --secundary-color: #FFF1CC;
+    --primary-color: #91afdb;
+    --secundary-color: #e7e3e3;
     --shadow-color: #CCC;
     --text-color: #FFF;
 }
@@ -15,7 +15,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     position:relative;
 }
 
@@ -71,6 +71,7 @@ footer{
 
 .button{
     border-style: none;
+    border-radius: 15px;
     height: 40px;
     padding: 6px 12px;
     background-color: black;
@@ -81,7 +82,7 @@ footer{
 }
 
 .button.blue{
-    background-color: #1FB6FF;
+    background-color:  #2f77e4;
 }
 
 button.green{
@@ -154,7 +155,7 @@ button.red{
 
 
 
-.modal-close{
+.fechar-modal{
     position: absolute;
     right: 0;
     display: block;
@@ -165,7 +166,7 @@ button.red{
     cursor: pointer;
 }
 
-.modal-close:hover{
+.fechar-modal:hover{
     background-color: #FF4949;
     color: white;
 }
@@ -218,55 +219,55 @@ button.red{
     }
 }
 
-.records{
+.listaCadastro{
     width: 100%;
     user-select: none;
     text-align: left;
 }
 
-.records th{
+.listaCadastro th{
     height: 50px;
     background-color: var(--primary-color);
     padding-left: 20px;
     font-size: 1.2rem;    
 }
-.records td{
+.listaCadastro td{
     height: 50px;
     padding-left: 20px;
 }
 
-.records th:last-child,
-.records td:last-child{
+.listaCadastro th:last-child,
+.listaCadastro td:last-child{
     padding: 0;
     min-width: 140px;
     text-align: center;
 }
 
-.records tr:hover{
+.listaCadastro tr:hover{
     background-color: var(--secundary-color);
 }
 
 @media(max-width:480px){
-    .records{
+    .listaCadastro{
         border-spacing: 5px;
     }
-    .records thead{
+    .listaCadastro thead{
         display:none;
     }
-    .records tr{
+    .listaCadastro tr{
         box-shadow: 0 1px 3px var(--shadow-color);
     }
-    .records td:not(:first-child){
+    .listaCadastro td:not(:first-child){
         display:flex;
         justify-content: space-between;
         padding: 0 20px;
     }
 
-    .records td{
+    .listaCadastro td{
         margin:10px 0;
     }
 
-    .records tr:hover{
+    .listaCadastro tr:hover{
         background-color: inherit;
     }
 }

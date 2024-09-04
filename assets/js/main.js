@@ -7,35 +7,35 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active')
 }
 
-const getLocalStorage = () => JSON.parse(localStorage.getItem('db_client')) ?? []
-const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.stringify(dbClient))
+const getLocalStorage = () => JSON.parse(localStorage.getItem('bd_cliente')) ?? []
+const setLocalStorage = (bdClient) => localStorage.setItem("bd_cliente", JSON.stringify(bdClient))
 
 
 const deleteClient = (index) => {
-    const dbClient = readClient()
-    dbClient.splice(index, 1)
-    setLocalStorage(dbClient)
+    const bdClient = readClient()
+    bdClient.splice(index, 1)
+    setLocalStorage(bdClient)
 }
 
 const updateClient = (index, client) => {
-    const dbClient = readClient()
-    dbClient[index] = client
-    setLocalStorage(dbClient)
+    const bdClient = readClient()
+    bdClient[index] = client
+    setLocalStorage(bdClient)
 }
 
 const readClient = () => getLocalStorage()
 
 const createClient = (client) => {
-    const dbClient = getLocalStorage()
-    dbClient.push(client)
-    setLocalStorage(dbClient)
+    const bdClient = getLocalStorage()
+    bdClient.push(client)
+    setLocalStorage(bdClient)
 }
 
 const isValidFields = () => {
     return document.getElementById('form').reportValidity()
 }
 
-// Interação com o layout
+
 
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
@@ -70,24 +70,23 @@ const createRow = (client, index) => {
     newRow.innerHTML = `
         <td>${client.nome}</td>
         <td>${client.email}</td>
-        <td>${client.status}</td> <!-- Exibir o status -->
         <td>
             <button type="button" class="button green" id="edit-${index}">Editar</button>
             <button type="button" class="button red" id="delete-${index}" >Excluir</button>
         </td>
     `
-    document.querySelector('#tableClient>tbody').appendChild(newRow)
+    document.querySelector('#tabelaCliente>tbody').appendChild(newRow)
 }
 
 const clearTable = () => {
-    const rows = document.querySelectorAll('#tableClient>tbody tr')
+    const rows = document.querySelectorAll('#tabelaCliente>tbody tr')
     rows.forEach(row => row.parentNode.removeChild(row))
 }
 
 const updateTable = () => {
-    const dbClient = readClient()
+    const bdClient = readClient()
     clearTable()
-    dbClient.forEach(createRow)
+    bdClient.forEach(createRow)
 }
 
 const fillFields = (client) => {
@@ -129,13 +128,13 @@ updateTable()
 document.getElementById('cadastrarCliente')
     .addEventListener('click', openModal)
 
-document.getElementById('modalClose')
+document.getElementById('fecharModal')
     .addEventListener('click', closeModal)
 
 document.getElementById('salvar')
     .addEventListener('click', saveClient)
 
-document.querySelector('#tableClient>tbody')
+document.querySelector('#tabelaCliente>tbody')
     .addEventListener('click', editDelete)
 
 document.getElementById('cancelar')
