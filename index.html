@@ -15,7 +15,7 @@
 
     <main>
 
-        <button type="button" class="button blue mobile" id="cadastrarCliente">Cadastrar Usuário</button>
+        <button type="button" class="button blue mobile" id="cadastrarCliente">Novo Usuário</button>
 
         <table id="tabelaCliente" class="list-register">
             <thead>
@@ -38,12 +38,12 @@
                 </header>
                 <form id="form" class="modal-form">
                     <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Digite seu nome" maxlength="150" required>
-                    <input type="email" id="email" class="modal-field" placeholder="Digite seu E-mail" maxlength="20" required>
+                    <input type="text" id="email" class="modal-field" placeholder="Digite seu E-mail" maxlength="20" required> <!-- foi solicitado o type = text no input de email no pdf do desafio, porem poderia ser do type = email -->
                     <input type="password" id="senha" class="modal-field" placeholder="Digite a senha" maxlength="8" required>
                     <select id="status" class="modal-field" required>
                         <option value="" disabled selected>Status do Usuário</option>
                         <option value="Ativo">Ativo</option>
-                        <option value="Excluído">Excluído</option>
+                        <option value="Excluido">Excluído</option>
                     </select>
                 </form>
                 <footer class="modal-footer">
