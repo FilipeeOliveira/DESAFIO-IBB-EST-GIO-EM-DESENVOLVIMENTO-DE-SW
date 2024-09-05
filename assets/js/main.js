@@ -8,7 +8,10 @@ const closeModal = () => {
 
 // Funções do banco de dados local do navegador
 const getLocalStorage = () => JSON.parse(localStorage.getItem('bd_cliente')) ?? []
-const setLocalStorage = (bdClient) => localStorage.setItem("bd_cliente", JSON.stringify(bdClient))
+const setLocalStorage = (bdClient) => { 
+    localStorage.setItem("bd_cliente", JSON.stringify(bdClient))
+    console.log('Dados sendo salvos:', bdClient) 
+}
 
 // Funções de CRUD (criar, ler, atualizar, excluir) do User
 const createUser = (client) => {
@@ -103,7 +106,6 @@ const editClient = (index) => {
     openModal()
 }
 
-
 // Função de editar e excluir
 const editDelete = (event) => {
     if (event.target.type == 'button') {
@@ -123,7 +125,6 @@ const editDelete = (event) => {
 }
 
 updateTable()
-
 
 // Eventos
 document.getElementById('cadastrarCliente').addEventListener('click', openModal)
