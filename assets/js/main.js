@@ -1,3 +1,4 @@
+// Funções do Modal 
 const openModal = () => document.getElementById('modal').classList.add('active')
 
 const closeModal = () => {
@@ -5,34 +6,33 @@ const closeModal = () => {
     document.getElementById('modal').classList.remove('active')
 }
 
+// Funções do banco de dados local do navegador
 const getLocalStorage = () => JSON.parse(localStorage.getItem('bd_cliente')) ?? []
 const setLocalStorage = (bdClient) => localStorage.setItem("bd_cliente", JSON.stringify(bdClient))
 
-
-const deleteClient = (index) => {
-    const bdClient = readClient()
-    bdClient.splice(index, 1)
-    setLocalStorage(bdClient)
-}
-
-const updateClient = (index, client) => {
-    const bdClient = readClient()
-    bdClient[index] = client
-    setLocalStorage(bdClient)
-}
-
-const readClient = () => getLocalStorage()
-
-const createClient = (client) => {
+// Funções de CRUD (criar, ler, atualizar, excluir) do User
+const createUser = (client) => {
     const bdClient = getLocalStorage()
     bdClient.push(client)
     setLocalStorage(bdClient)
 }
 
-const isValidFields = () => {
-    return document.getElementById('form').reportValidity()
+const readUser = () => getLocalStorage()
+
+const updateUser = (index, client) => {
+    const bdClient = readUser()
+    bdClient[index] = client
+    setLocalStorage(bdClient)
 }
 
+const deleteUser = (index) => {
+    const bdClient = readUser()
+    bdClient.splice(index, 1)
+    setLocalStorage(bdClient)
+}
+
+// Validações do Form
+const isValidFields = () => document.getElementById('form').reportValidity()
 
 const clearFields = () => {
     const fields = document.querySelectorAll('.modal-field')
@@ -41,27 +41,27 @@ const clearFields = () => {
     document.querySelector(".modal-header>h2").textContent = 'Novo Usuário'
 }
 
-const saveClient = () => {
+// Função de salvamento do User
+const saveUser = () => {
     if (isValidFields()) {
         const client = {
             nome: document.getElementById('nome').value,
             email: document.getElementById('email').value,
             senha: document.getElementById('senha').value,
-            status: document.getElementById('status').value 
+            status: document.getElementById('status').value
         }
         const index = document.getElementById('nome').dataset.index
         if (index == 'new') {
-            createClient(client)
-            updateTable()
-            closeModal()
+            createUser(client)
         } else {
-            updateClient(index, client)
-            updateTable()
-            closeModal()
+            updateUser(index, client)
         }
+        updateTable()
+        closeModal()
     }
 }
 
+// Funções de manipulação do Form
 const createRow = (client, index) => {
     const newRow = document.createElement('tr')
     newRow.innerHTML = `
@@ -81,27 +81,30 @@ const clearTable = () => {
 }
 
 const updateTable = () => {
-    const bdClient = readClient()
+    const bdClient = readUser()
     clearTable()
     bdClient.forEach(createRow)
 }
 
+// Funções de Edição de Usuários
 const fillFields = (client) => {
     document.getElementById('nome').value = client.nome
     document.getElementById('email').value = client.email
-    document.getElementById('senha').value = client.senha 
-    document.getElementById('status').value = client.status 
+    document.getElementById('senha').value = client.senha
+    document.getElementById('status').value = client.status
     document.getElementById('nome').dataset.index = client.index
 }
 
 const editClient = (index) => {
-    const client = readClient()[index]
+    const client = readUser()[index]
     client.index = index
     fillFields(client)
     document.querySelector(".modal-header>h2").textContent = `Editando ${client.nome}`
     openModal()
 }
 
+
+// Função de editar e excluir
 const editDelete = (event) => {
     if (event.target.type == 'button') {
         const [action, index] = event.target.id.split('-')
@@ -109,10 +112,10 @@ const editDelete = (event) => {
         if (action == 'edit') {
             editClient(index)
         } else {
-            const client = readClient()[index]
-            const response = confirm(`Deseja realmente excluir o cliente ${client.nome}`)
+            const client = readUser()[index]
+            const response = confirm(`Deseja realmente excluir o usuário ${client.nome}?`)
             if (response) {
-                deleteClient(index)
+                deleteUser(index)
                 updateTable()
             }
         }
@@ -121,17 +124,10 @@ const editDelete = (event) => {
 
 updateTable()
 
-document.getElementById('cadastrarCliente')
-    .addEventListener('click', openModal)
 
-document.getElementById('fecharModal')
-    .addEventListener('click', closeModal)
-
-document.getElementById('salvar')
-    .addEventListener('click', saveClient)
-
-document.querySelector('#tabelaCliente>tbody')
-    .addEventListener('click', editDelete)
-
-document.getElementById('cancelar')
-    .addEventListener('click', closeModal)
+// Eventos
+document.getElementById('cadastrarCliente').addEventListener('click', openModal)
+document.getElementById('fecharModal').addEventListener('click', closeModal)
+document.getElementById('salvar').addEventListener('click', saveUser)
+document.querySelector('#tabelaCliente>tbody').addEventListener('click', editDelete)
+document.getElementById('cancelar').addEventListener('click', closeModal)
